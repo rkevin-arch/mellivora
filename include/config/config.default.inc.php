@@ -134,3 +134,6 @@ Config::set('MELLIVORA_CONFIG_SEGMENT_IO_KEY', '');
 Config::set('MELLIVORA_CONFIG_AWS_S3_KEY_ID', '');
 Config::set('MELLIVORA_CONFIG_AWS_S3_SECRET', '');
 Config::set('MELLIVORA_CONFIG_AWS_S3_BUCKET', '');
+
+// Most of the configuration is set via environment variables in the docker compose file, but I have to set this one manually:
+date_default_timezone_set("America/Los_Angeles");
