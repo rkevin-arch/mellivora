@@ -12,7 +12,7 @@ function print_solved_graph($user_id) {
         WHERE
           ca.available_from < UNIX_TIMESTAMP() AND
           ca.exposed = 1
-        ORDER BY ca.title ASC',
+        ORDER BY ca.id ASC',
         array(
             'user_id'=>$user_id
         )

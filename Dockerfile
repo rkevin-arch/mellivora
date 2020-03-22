@@ -2,6 +2,8 @@ FROM php:7-apache
 
 MAINTAINER Nakiami <contact@greyboxconcepts.com.au>
 
+RUN ln -snf /usr/share/zoneinfo/America/Los_Angeles /etc/localtime && dpkg-reconfigure -f noninteractive tzdata
+
 RUN apt-get update && apt-get install -y \
     git \
     libssl-dev \

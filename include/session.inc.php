@@ -515,7 +515,7 @@ function register_account($email, $password, $team_name, $country, $type = null)
         );
 
         // send details to user
-        send_email(array($email), $email_subject, $email_body);
+        //send_email(array($email), $email_subject, $email_body);
 
         // if account isn't enabled by default, display message and die
         if (!Config::get('MELLIVORA_CONFIG_ACCOUNTS_DEFAULT_ENABLED')) {

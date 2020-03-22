@@ -2,6 +2,9 @@
 
 require('../../include/mellivora.inc.php');
 
+message_generic("Failure", "Password reset is disabled since I don't want to setup an email account. Contact me directly at rk@rkevin.dev using the email you registered with if you really want your password reset, or just register another one.");
+
+/*
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // get auth data
@@ -108,3 +111,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         message_generic('Success', 'Your password has been reset.');
     }
 }
+*/

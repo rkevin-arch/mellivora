@@ -38,7 +38,7 @@ foreach($categories as $category) {
             'points'
         ),
         array('category' => $category['id']),
-        'points ASC'
+        'id ASC'
     );
 
     if (empty($challenges)) {

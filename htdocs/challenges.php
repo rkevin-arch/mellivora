@@ -30,7 +30,7 @@ $categories = db_select_all(
     array(
         'exposed'=>1
     ),
-    'title ASC'
+    'id ASC'
 );
 
 // determine which category to display
@@ -81,9 +81,13 @@ if (empty($current_category)) {
 echo '<div id="categories-menu">
 <ul id="categories-menu">';
 foreach ($categories as $cat) {
-    if ($now < $cat['available_from'] || $now > $cat['available_until']) {
+    if ($now < $cat['available_from']) {
         echo '<li class="disabled">
         <a data-container="body" data-toggle="tooltip" data-placement="top" class="has-tooltip" title="Available in '.time_remaining($cat['available_from']).'.">',htmlspecialchars($cat['title']),'</a>
+        </li>';
+    } else if ($now > $cat['available_until']) {
+        echo '<li class="disabled">
+        <a data-container="body" data-toggle="tooltip" data-placement="top" class="has-tooltip" title="Closed '.time_elapsed($cat['available_until']).' ago.">',htmlspecialchars($cat['title']),'</a>
         </li>';
     } else {
         echo '<li ',($current_category['id'] == $cat['id'] ? ' class="active"' : ''),'><a href="',Config::get('MELLIVORA_CONFIG_SITE_URL'),'challenges?category=',htmlspecialchars(to_permalink($cat['title'])),'">',htmlspecialchars($cat['title']),'</a></li>';
@@ -123,7 +127,7 @@ $challenges = db_query_fetch_all('
     WHERE
        c.category = :category AND
        c.exposed = 1
-    ORDER BY c.points ASC, c.id ASC',
+    ORDER BY c.id ASC',
     array(
         'user_id_1'=>$_SESSION['id'],
         'user_id_2'=>$_SESSION['id'],
