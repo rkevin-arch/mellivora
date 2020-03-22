@@ -81,7 +81,7 @@ function get_ip($as_integer = false) {
                     // we need to go for the 2nd to last element in list
                     // since the last element is just rk-serv, and everything before
                     // the 2nd to last ip cannot be trusted
-                    $ip = trim($forwarded_for_list[1]);
+                    $ip = trim($forwarded_for_list[count($forwarded_for_list)-2]);
                 } else {
                     //no idea why you'd be here but ok
                     foreach ($forwarded_for_list as $forwarded_for) {
