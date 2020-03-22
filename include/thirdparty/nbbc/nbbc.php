@@ -680,7 +680,7 @@ class BBCodeLibrary
         ),
         'code' => Array(
             'mode' => BBCODE_MODE_ENHANCED,
-            'template' => "<code>{\$_content/v}</code>",
+            'template' => " <code>{\$_content/v}</code> ",
             'class' => 'code',
             'allow_in' => Array('listitem', 'block', 'columns'),
             'content' => BBCODE_VERBATIM,
@@ -693,7 +693,7 @@ class BBCodeLibrary
         ),
         'pre' => Array(
             'mode' => BBCODE_MODE_ENHANCED,
-            'template' => "<pre>{\$_content/v}</pre>",
+            'template' => "<pre> {\$_content/v}</pre>",
             'class' => 'code',
             'allow_in' => Array('listitem', 'block', 'columns'),
             'content' => BBCODE_VERBATIM,
