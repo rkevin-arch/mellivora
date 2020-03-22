@@ -75,8 +75,12 @@ function get_ip($as_integer = false) {
         else {
             $forwarded_for_list = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
             if(count($forwarded_for_list) >= 2){
-                if(is_valid_ip(trim($forwarded_for_list[1]))){
-                    // because of the particular setup im using, the outside world -> rk-serv -> photon -> mellivora container, so go for the 2nd element in list
+                if(is_valid_ip(trim($forwarded_for_list[count($forwarded_for_list)-2]))){
+                    // because of the particular setup im using
+                    // the outside world -> rk-serv -> photon -> mellivora container
+                    // we need to go for the 2nd to last element in list
+                    // since the last element is just rk-serv, and everything before
+                    // the 2nd to last ip cannot be trusted
                     $ip = trim($forwarded_for_list[1]);
                 } else {
                     //no idea why you'd be here but ok
