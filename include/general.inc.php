@@ -75,9 +75,9 @@ function get_ip($as_integer = false) {
         else {
             $forwarded_for_list = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
             if(count($forwarded_for_list) >= 2){
-                if(is_valid_ip($forwarded_for_list[1])){
+                if(is_valid_ip(trim($forwarded_for_list[1]))){
                     // because of the particular setup im using, the outside world -> rk-serv -> photon -> mellivora container, so go for the 2nd element in list
-                    $ip = $forwarded_for;
+                    $ip = trim($forwarded_for_list[1]);
                 } else {
                     //no idea why you'd be here but ok
                     foreach ($forwarded_for_list as $forwarded_for) {
